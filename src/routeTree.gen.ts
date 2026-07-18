@@ -9,8 +9,110 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VolunteersRouteImport } from './routes/volunteers'
+import { Route as TransportRouteImport } from './routes/transport'
+import { Route as SustainabilityRouteImport } from './routes/sustainability'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as PlannerRouteImport } from './routes/planner'
+import { Route as OperationsRouteImport } from './routes/operations'
+import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as NavigationRouteImport } from './routes/navigation'
+import { Route as MultilingualRouteImport } from './routes/multilingual'
+import { Route as MapRouteImport } from './routes/map'
+import { Route as LiveRouteImport } from './routes/live'
+import { Route as FoodRouteImport } from './routes/food'
+import { Route as EmergencyRouteImport } from './routes/emergency'
+import { Route as CrowdRouteImport } from './routes/crowd'
+import { Route as AssistantRouteImport } from './routes/assistant'
+import { Route as AccessibilityRouteImport } from './routes/accessibility'
 import { Route as IndexRouteImport } from './routes/index'
 
+const VolunteersRoute = VolunteersRouteImport.update({
+  id: '/volunteers',
+  path: '/volunteers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TransportRoute = TransportRouteImport.update({
+  id: '/transport',
+  path: '/transport',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SustainabilityRoute = SustainabilityRouteImport.update({
+  id: '/sustainability',
+  path: '/sustainability',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlannerRoute = PlannerRouteImport.update({
+  id: '/planner',
+  path: '/planner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OperationsRoute = OperationsRouteImport.update({
+  id: '/operations',
+  path: '/operations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NavigationRoute = NavigationRouteImport.update({
+  id: '/navigation',
+  path: '/navigation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MultilingualRoute = MultilingualRouteImport.update({
+  id: '/multilingual',
+  path: '/multilingual',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MapRoute = MapRouteImport.update({
+  id: '/map',
+  path: '/map',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LiveRoute = LiveRouteImport.update({
+  id: '/live',
+  path: '/live',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FoodRoute = FoodRouteImport.update({
+  id: '/food',
+  path: '/food',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmergencyRoute = EmergencyRouteImport.update({
+  id: '/emergency',
+  path: '/emergency',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CrowdRoute = CrowdRouteImport.update({
+  id: '/crowd',
+  path: '/crowd',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssistantRoute = AssistantRouteImport.update({
+  id: '/assistant',
+  path: '/assistant',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccessibilityRoute = AccessibilityRouteImport.update({
+  id: '/accessibility',
+  path: '/accessibility',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +121,270 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/accessibility': typeof AccessibilityRoute
+  '/assistant': typeof AssistantRoute
+  '/crowd': typeof CrowdRoute
+  '/emergency': typeof EmergencyRoute
+  '/food': typeof FoodRoute
+  '/live': typeof LiveRoute
+  '/map': typeof MapRoute
+  '/multilingual': typeof MultilingualRoute
+  '/navigation': typeof NavigationRoute
+  '/notifications': typeof NotificationsRoute
+  '/operations': typeof OperationsRoute
+  '/planner': typeof PlannerRoute
+  '/profile': typeof ProfileRoute
+  '/settings': typeof SettingsRoute
+  '/sustainability': typeof SustainabilityRoute
+  '/transport': typeof TransportRoute
+  '/volunteers': typeof VolunteersRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/accessibility': typeof AccessibilityRoute
+  '/assistant': typeof AssistantRoute
+  '/crowd': typeof CrowdRoute
+  '/emergency': typeof EmergencyRoute
+  '/food': typeof FoodRoute
+  '/live': typeof LiveRoute
+  '/map': typeof MapRoute
+  '/multilingual': typeof MultilingualRoute
+  '/navigation': typeof NavigationRoute
+  '/notifications': typeof NotificationsRoute
+  '/operations': typeof OperationsRoute
+  '/planner': typeof PlannerRoute
+  '/profile': typeof ProfileRoute
+  '/settings': typeof SettingsRoute
+  '/sustainability': typeof SustainabilityRoute
+  '/transport': typeof TransportRoute
+  '/volunteers': typeof VolunteersRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/accessibility': typeof AccessibilityRoute
+  '/assistant': typeof AssistantRoute
+  '/crowd': typeof CrowdRoute
+  '/emergency': typeof EmergencyRoute
+  '/food': typeof FoodRoute
+  '/live': typeof LiveRoute
+  '/map': typeof MapRoute
+  '/multilingual': typeof MultilingualRoute
+  '/navigation': typeof NavigationRoute
+  '/notifications': typeof NotificationsRoute
+  '/operations': typeof OperationsRoute
+  '/planner': typeof PlannerRoute
+  '/profile': typeof ProfileRoute
+  '/settings': typeof SettingsRoute
+  '/sustainability': typeof SustainabilityRoute
+  '/transport': typeof TransportRoute
+  '/volunteers': typeof VolunteersRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/accessibility'
+    | '/assistant'
+    | '/crowd'
+    | '/emergency'
+    | '/food'
+    | '/live'
+    | '/map'
+    | '/multilingual'
+    | '/navigation'
+    | '/notifications'
+    | '/operations'
+    | '/planner'
+    | '/profile'
+    | '/settings'
+    | '/sustainability'
+    | '/transport'
+    | '/volunteers'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/accessibility'
+    | '/assistant'
+    | '/crowd'
+    | '/emergency'
+    | '/food'
+    | '/live'
+    | '/map'
+    | '/multilingual'
+    | '/navigation'
+    | '/notifications'
+    | '/operations'
+    | '/planner'
+    | '/profile'
+    | '/settings'
+    | '/sustainability'
+    | '/transport'
+    | '/volunteers'
+  id:
+    | '__root__'
+    | '/'
+    | '/accessibility'
+    | '/assistant'
+    | '/crowd'
+    | '/emergency'
+    | '/food'
+    | '/live'
+    | '/map'
+    | '/multilingual'
+    | '/navigation'
+    | '/notifications'
+    | '/operations'
+    | '/planner'
+    | '/profile'
+    | '/settings'
+    | '/sustainability'
+    | '/transport'
+    | '/volunteers'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AccessibilityRoute: typeof AccessibilityRoute
+  AssistantRoute: typeof AssistantRoute
+  CrowdRoute: typeof CrowdRoute
+  EmergencyRoute: typeof EmergencyRoute
+  FoodRoute: typeof FoodRoute
+  LiveRoute: typeof LiveRoute
+  MapRoute: typeof MapRoute
+  MultilingualRoute: typeof MultilingualRoute
+  NavigationRoute: typeof NavigationRoute
+  NotificationsRoute: typeof NotificationsRoute
+  OperationsRoute: typeof OperationsRoute
+  PlannerRoute: typeof PlannerRoute
+  ProfileRoute: typeof ProfileRoute
+  SettingsRoute: typeof SettingsRoute
+  SustainabilityRoute: typeof SustainabilityRoute
+  TransportRoute: typeof TransportRoute
+  VolunteersRoute: typeof VolunteersRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/volunteers': {
+      id: '/volunteers'
+      path: '/volunteers'
+      fullPath: '/volunteers'
+      preLoaderRoute: typeof VolunteersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/transport': {
+      id: '/transport'
+      path: '/transport'
+      fullPath: '/transport'
+      preLoaderRoute: typeof TransportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sustainability': {
+      id: '/sustainability'
+      path: '/sustainability'
+      fullPath: '/sustainability'
+      preLoaderRoute: typeof SustainabilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/planner': {
+      id: '/planner'
+      path: '/planner'
+      fullPath: '/planner'
+      preLoaderRoute: typeof PlannerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/operations': {
+      id: '/operations'
+      path: '/operations'
+      fullPath: '/operations'
+      preLoaderRoute: typeof OperationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/navigation': {
+      id: '/navigation'
+      path: '/navigation'
+      fullPath: '/navigation'
+      preLoaderRoute: typeof NavigationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/multilingual': {
+      id: '/multilingual'
+      path: '/multilingual'
+      fullPath: '/multilingual'
+      preLoaderRoute: typeof MultilingualRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/map': {
+      id: '/map'
+      path: '/map'
+      fullPath: '/map'
+      preLoaderRoute: typeof MapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/live': {
+      id: '/live'
+      path: '/live'
+      fullPath: '/live'
+      preLoaderRoute: typeof LiveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/food': {
+      id: '/food'
+      path: '/food'
+      fullPath: '/food'
+      preLoaderRoute: typeof FoodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/emergency': {
+      id: '/emergency'
+      path: '/emergency'
+      fullPath: '/emergency'
+      preLoaderRoute: typeof EmergencyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/crowd': {
+      id: '/crowd'
+      path: '/crowd'
+      fullPath: '/crowd'
+      preLoaderRoute: typeof CrowdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assistant': {
+      id: '/assistant'
+      path: '/assistant'
+      fullPath: '/assistant'
+      preLoaderRoute: typeof AssistantRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accessibility': {
+      id: '/accessibility'
+      path: '/accessibility'
+      fullPath: '/accessibility'
+      preLoaderRoute: typeof AccessibilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +397,24 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AccessibilityRoute: AccessibilityRoute,
+  AssistantRoute: AssistantRoute,
+  CrowdRoute: CrowdRoute,
+  EmergencyRoute: EmergencyRoute,
+  FoodRoute: FoodRoute,
+  LiveRoute: LiveRoute,
+  MapRoute: MapRoute,
+  MultilingualRoute: MultilingualRoute,
+  NavigationRoute: NavigationRoute,
+  NotificationsRoute: NotificationsRoute,
+  OperationsRoute: OperationsRoute,
+  PlannerRoute: PlannerRoute,
+  ProfileRoute: ProfileRoute,
+  SettingsRoute: SettingsRoute,
+  SustainabilityRoute: SustainabilityRoute,
+  TransportRoute: TransportRoute,
+  VolunteersRoute: VolunteersRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
