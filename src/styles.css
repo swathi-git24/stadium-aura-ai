@@ -199,3 +199,19 @@
   opacity: 0.35;
   animation: pulse-dot 1.8s ease-in-out infinite;
 }
+
+/* Accessibility preferences */
+html.hc {
+  --border: oklch(0.35 0 0);
+  --muted-foreground: oklch(0.25 0 0);
+}
+html.hc.dark {
+  --border: oklch(0.85 0 0);
+  --muted-foreground: oklch(0.85 0 0);
+}
+html.lg-text { font-size: 18px; }
+html.reduce-motion *, html.reduce-motion *::before, html.reduce-motion *::after {
+  animation-duration: 0.001ms !important;
+  transition-duration: 0.001ms !important;
+}
+html[dir="rtl"] body { direction: rtl; }
