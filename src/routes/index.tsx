@@ -8,10 +8,10 @@ import { Card, PageContainer, PageHeader, SectionTitle, Stat } from "@/component
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Home — FIFA Smart Stadium" },
+      { title: "FIFA Smart Stadium" },
       { name: "description", content: "Live stadium status, crowd, weather, gates, parking and your personalized match day timeline." },
-      { property: "og:title", content: "FIFA Smart Stadium — Home" },
-      { property: "og:description", content: "Your AI-powered command center for World Cup 2026 match days." },
+      { property: "og:title", content: "FIFA Smart Stadium" },
+      { property: "og:description", content: "Live stadium status, crowd, weather, gates, parking and your personalized match day timeline." },
     ],
   }),
   component: Home,

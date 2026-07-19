@@ -78,25 +78,28 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "FIFA Smart Stadium — AI Operations for World Cup 2026" },
+      { title: "FIFA Smart Stadium" },
       {
         name: "description",
         content:
-          "AI-powered smart stadium platform for FIFA World Cup 2026 — navigation, crowd intelligence, emergency response, multilingual assistance and live operations for fans, volunteers and organizers.",
+          "Live stadium status, crowd, weather, gates, parking and your personalized match day timeline.",
       },
       { name: "author", content: "FIFA Smart Stadium" },
       { property: "og:title", content: "FIFA Smart Stadium" },
       {
         property: "og:description",
         content:
-          "The AI operating system for World Cup 2026 stadiums — designed for fans, volunteers, and operations.",
+          "Live stadium status, crowd, weather, gates, parking and your personalized match day timeline.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "FIFA Smart Stadium" },
+      { name: "twitter:description", content: "Live stadium status, crowd, weather, gates, parking and your personalized match day timeline." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/80501755-c405-44b5-8f3d-1b744b62a0f8" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/80501755-c405-44b5-8f3d-1b744b62a0f8" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
