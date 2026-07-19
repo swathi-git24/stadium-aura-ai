@@ -1,65 +1,45 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
 import {
-  Home,
-  Radio,
-  Map as MapIcon,
-  Compass,
-  Sparkles,
-  CalendarClock,
-  Train,
-  UtensilsCrossed,
-  Accessibility,
-  Users,
-  Siren,
-  HandHeart,
-  LayoutDashboard,
-  Languages,
-  Leaf,
-  Bell,
-  UserCircle,
-  Settings,
-  Sun,
-  Moon,
-  Search,
-  Menu,
-  X,
-  ShieldAlert,
+  Home, Radio, Map as MapIcon, Compass, Sparkles, CalendarClock, Train,
+  UtensilsCrossed, Accessibility, Users, Siren, HandHeart, LayoutDashboard,
+  Languages, Leaf, Bell, UserCircle, Settings, Sun, Moon, Menu, X, ShieldAlert,
 } from "lucide-react";
 import { AIAssistant } from "./AIAssistant";
+import { GlobalSearch } from "./GlobalSearch";
+import { LanguageMenu } from "./LanguageMenu";
+import { useLanguage } from "@/lib/language";
 
-type NavItem = { to: string; label: string; icon: React.ComponentType<{ className?: string }>; group: string };
+type NavItem = { to: string; labelKey: string; icon: React.ComponentType<{ className?: string }>; groupKey: string };
 
 const NAV: NavItem[] = [
-  { to: "/", label: "Home", icon: Home, group: "Overview" },
-  { to: "/live", label: "Live Stadium", icon: Radio, group: "Overview" },
-  { to: "/map", label: "Interactive Map", icon: MapIcon, group: "Overview" },
-  { to: "/navigation", label: "Navigation", icon: Compass, group: "Overview" },
+  { to: "/", labelKey: "home", icon: Home, groupKey: "overview" },
+  { to: "/live", labelKey: "live_stadium", icon: Radio, groupKey: "overview" },
+  { to: "/map", labelKey: "map", icon: MapIcon, groupKey: "overview" },
+  { to: "/navigation", labelKey: "navigation", icon: Compass, groupKey: "overview" },
 
-  { to: "/assistant", label: "AI Assistant", icon: Sparkles, group: "Intelligence" },
-  { to: "/planner", label: "Match Planner", icon: CalendarClock, group: "Intelligence" },
-  { to: "/crowd", label: "Crowd Intelligence", icon: Users, group: "Intelligence" },
-  { to: "/multilingual", label: "Multilingual", icon: Languages, group: "Intelligence" },
+  { to: "/assistant", labelKey: "ai_assistant", icon: Sparkles, groupKey: "intelligence" },
+  { to: "/planner", labelKey: "planner", icon: CalendarClock, groupKey: "intelligence" },
+  { to: "/crowd", labelKey: "crowd", icon: Users, groupKey: "intelligence" },
+  { to: "/multilingual", labelKey: "multilingual", icon: Languages, groupKey: "intelligence" },
 
-  { to: "/transport", label: "Transportation", icon: Train, group: "Fan Experience" },
-  { to: "/food", label: "Food & Drinks", icon: UtensilsCrossed, group: "Fan Experience" },
-  { to: "/accessibility", label: "Accessibility", icon: Accessibility, group: "Fan Experience" },
-  { to: "/sustainability", label: "Sustainability", icon: Leaf, group: "Fan Experience" },
+  { to: "/transport", labelKey: "transport", icon: Train, groupKey: "fan_experience" },
+  { to: "/food", labelKey: "food", icon: UtensilsCrossed, groupKey: "fan_experience" },
+  { to: "/accessibility", labelKey: "accessibility", icon: Accessibility, groupKey: "fan_experience" },
+  { to: "/sustainability", labelKey: "sustainability", icon: Leaf, groupKey: "fan_experience" },
 
-  { to: "/emergency", label: "Emergency AI", icon: Siren, group: "Operations" },
-  { to: "/volunteers", label: "Volunteers", icon: HandHeart, group: "Operations" },
-  { to: "/operations", label: "Operations", icon: LayoutDashboard, group: "Operations" },
+  { to: "/emergency", labelKey: "emergency", icon: Siren, groupKey: "operations" },
+  { to: "/volunteers", labelKey: "volunteers", icon: HandHeart, groupKey: "operations" },
+  { to: "/operations", labelKey: "operations", icon: LayoutDashboard, groupKey: "operations" },
 
-  { to: "/notifications", label: "Notifications", icon: Bell, group: "Account" },
-  { to: "/profile", label: "Profile", icon: UserCircle, group: "Account" },
-  { to: "/settings", label: "Settings", icon: Settings, group: "Account" },
+  { to: "/notifications", labelKey: "notifications", icon: Bell, groupKey: "account" },
+  { to: "/profile", labelKey: "profile", icon: UserCircle, groupKey: "account" },
+  { to: "/settings", labelKey: "settings", icon: Settings, groupKey: "account" },
 ];
 
 function useTheme() {
   const [dark, setDark] = useState(false);
-  useEffect(() => {
-    setDark(document.documentElement.classList.contains("dark"));
-  }, []);
+  useEffect(() => { setDark(document.documentElement.classList.contains("dark")); }, []);
   const toggle = () => {
     const next = !document.documentElement.classList.contains("dark");
     document.documentElement.classList.toggle("dark", next);
@@ -71,7 +51,8 @@ function useTheme() {
 
 function Sidebar({ onClose }: { onClose?: () => void }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const groups = Array.from(new Set(NAV.map((n) => n.group)));
+  const { t } = useLanguage();
+  const groups = Array.from(new Set(NAV.map((n) => n.groupKey)));
 
   return (
     <aside className="flex h-full w-72 shrink-0 flex-col border-r border-sidebar-border bg-sidebar text-sidebar-foreground">
@@ -96,16 +77,17 @@ function Sidebar({ onClose }: { onClose?: () => void }) {
         {groups.map((g) => (
           <div key={g} className="mb-4">
             <div className="px-3 pb-1.5 pt-3 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-              {g}
+              {t(g)}
             </div>
             <div className="space-y-0.5">
-              {NAV.filter((n) => n.group === g).map((n) => {
+              {NAV.filter((n) => n.groupKey === g).map((n) => {
                 const active = pathname === n.to;
                 const Icon = n.icon;
                 return (
                   <Link
                     key={n.to}
-                    to={n.to}
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    to={n.to as any}
                     onClick={onClose}
                     className={
                       "group flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors " +
@@ -113,9 +95,10 @@ function Sidebar({ onClose }: { onClose?: () => void }) {
                         ? "bg-sidebar-accent font-medium text-sidebar-primary"
                         : "text-sidebar-foreground/80 hover:bg-sidebar-accent hover:text-sidebar-foreground")
                     }
+                    aria-current={active ? "page" : undefined}
                   >
                     <Icon className={"h-[18px] w-[18px] " + (active ? "text-sidebar-primary" : "text-muted-foreground group-hover:text-foreground")} />
-                    <span className="truncate">{n.label}</span>
+                    <span className="truncate">{t(n.labelKey)}</span>
                   </Link>
                 );
               })}
@@ -130,7 +113,7 @@ function Sidebar({ onClose }: { onClose?: () => void }) {
           onClick={onClose}
           className="flex items-center gap-3 rounded-lg bg-destructive/10 px-3 py-2.5 text-sm font-medium text-destructive hover:bg-destructive/15"
         >
-          <ShieldAlert className="h-4 w-4" /> Emergency SOS
+          <ShieldAlert className="h-4 w-4" /> {t("emergency_sos")}
         </Link>
       </div>
     </aside>
@@ -145,14 +128,7 @@ function TopBar({ onOpenMenu }: { onOpenMenu: () => void }) {
         <Menu className="h-5 w-5" />
       </button>
 
-      <div className="relative hidden max-w-md flex-1 md:block">
-        <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-        <input
-          type="search"
-          placeholder="Search gates, seats, food, help…"
-          className="h-10 w-full rounded-xl border border-input bg-muted/40 pl-9 pr-3 text-sm outline-none placeholder:text-muted-foreground focus:bg-background focus:ring-focus"
-        />
-      </div>
+      <GlobalSearch />
 
       <div className="ml-auto flex items-center gap-2">
         <div className="hidden items-center gap-2 rounded-full border border-border bg-elevated px-3 py-1.5 text-xs md:flex">
@@ -162,6 +138,8 @@ function TopBar({ onOpenMenu }: { onOpenMenu: () => void }) {
           <span className="font-medium">Live</span>
           <span className="text-muted-foreground">Estadio Azteca · 82,000</span>
         </div>
+
+        <LanguageMenu />
 
         <button onClick={toggle} aria-label="Toggle theme" className="grid h-10 w-10 place-items-center rounded-xl border border-border bg-elevated hover:bg-muted">
           {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
@@ -202,6 +180,9 @@ export function AppShell({ children }: { children: ReactNode }) {
 
       <div className="flex min-w-0 flex-1 flex-col">
         <TopBar onOpenMenu={() => setMobileOpen(true)} />
+        <div className="border-b border-border bg-background/70 px-4 py-2 md:hidden">
+          <GlobalSearch compact />
+        </div>
         <main className="flex-1">{children}</main>
       </div>
 
