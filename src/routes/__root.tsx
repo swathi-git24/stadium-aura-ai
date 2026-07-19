@@ -128,14 +128,21 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+import { LanguageProvider } from "../lib/language";
+import { PreferencesProvider } from "../lib/preferences";
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AppShell>
-        <Outlet />
-      </AppShell>
+      <LanguageProvider>
+        <PreferencesProvider>
+          <AppShell>
+            <Outlet />
+          </AppShell>
+        </PreferencesProvider>
+      </LanguageProvider>
     </QueryClientProvider>
   );
 }
