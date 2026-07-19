@@ -201,16 +201,16 @@
 }
 
 /* Accessibility preferences */
-html.high-contrast {
+html.hc {
   --border: oklch(0.35 0 0);
   --muted-foreground: oklch(0.25 0 0);
 }
-html.high-contrast.dark {
+html.hc.dark {
   --border: oklch(0.85 0 0);
   --muted-foreground: oklch(0.85 0 0);
 }
-html.large-text { font-size: 18px; }
-html.reduced-motion *, html.reduced-motion *::before, html.reduced-motion *::after {
+html.lg-text { font-size: 18px; }
+html.reduce-motion *, html.reduce-motion *::before, html.reduce-motion *::after {
   animation-duration: 0.001ms !important;
   transition-duration: 0.001ms !important;
 }
